@@ -11,15 +11,18 @@
 puts "Seeding starts"
 
 Flat.destroy_all
+User.destroy_all
+Registration.destroy_all
+Booking.destroy_all
 
 10.times do
-  flat = Flat.new(name: Faker::GameOfThrones.house, location: Faker::GameOfThrones.city, price: 42, user_id: rand(2..10))
-
-  if flat.save
-    puts "#{flat.name} #{flat.user_id} "
-  else
-    puts "#{flat.name} did not work for #{flat.user_id}"
-  end
+  reg = Registration.create(email: Faker::Internet.email, password: "123456")
+  reg
+  user = User.create(first_name: Faker::StarWars.character, registration_id: reg.id)
+  user
+  flat = Flat.create(name: Faker::StarWars.vehicle, location: Faker::StarWars.planet, price: 42, user_id: user.id)
+  booking = Booking.create(user: user, flat: flat, total_price: 42, status: "Pending")
+  booking
 end
 
 puts "Seeding done"
