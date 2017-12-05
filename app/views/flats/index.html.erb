@@ -1,2 +1,13 @@
-<h1>Flats#index</h1>
-<p>Find me in app/views/flats/index.html.erb</p>
+<h1> This is a list of all the flats </h1>
+<div class="container">
+  <ul>
+    <% @flats.each do |flat|  %>
+      <li>
+        <div class="card">
+        <%= flat.description %>
+        <%= flat.price %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
