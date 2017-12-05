@@ -6,13 +6,16 @@
             <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
               <div class="card-category"><%= flat.location %> </div>
               <div class="card-description">
-                <h2><%= flat.name %> </h2>
+                <h2><%=flat.name %> </h2>
                 <p><%= flat.price %> </p>
               </div>
               <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
               <a class="card-link" href="#" ></a>
+              <%= link_to "", flat_path(flat), class: "card-link" %>
             </div>
           </div>
       <% end %>
   </div>
 </div>
+
+
