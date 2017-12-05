@@ -19,6 +19,7 @@ class FlatsController < ApplicationController
     if @flat.save
       redirect_to flat_path(@flat)
     else
+      raise
       render :new
     end
   end
