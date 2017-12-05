@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_registration!
 
   def current_user
-      @current_user ||= current_registration.try(:registration)
+      @current_user ||= current_registration.try(:user)
     end
 
 end
