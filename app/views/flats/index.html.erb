@@ -1,13 +1,13 @@
-<h1> This is a list of all the flats </h1>
+<h1 class="home-header"> This is a list of all the flats </h1>
 <div class="container">
-  <ul>
-    <% @flats.each do |flat|  %>
-      <li>
-        <div class="card">
-        <%= flat.name %>
-        <%= flat.price %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+  <div class="row">
+      <% @flats.each do |flat|  %>
+          <div class="card col-xs-12 col-sm-6 col-md-4">
+          <h3><%= link_to flat.name, flat_path(flat) %></h3><br>
+          <p> Price :<%= flat.price %></p>
+          </div>
+      <% end %>
+  </div>
 </div>
+
+<p><%= link_to "Create New Flat", new_flat_path %></p>
