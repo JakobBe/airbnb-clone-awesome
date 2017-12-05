@@ -1,24 +1,25 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user!
 
-  # def index
-  #   @bookings = Booking.all
-  # end
-
+  def index
+    @bookings = Booking.all
+  end
 
   def new
+    @flat = Flat.find(params[:flat_id])
     @booking = Booking.new
   end
 
   def create
-    @booking = Booking.new(bookings_params)
     @flat = Flat.find(params[:flat_id])
-    @user = User.find(params[:user_id])
-    @booking.flat = @flat
-    @booking.user = @user
-    @booking.total_price = @flat.price * @booking.nights
+    @user = current_user
+    @booking = Booking.new(bookings_params)
+    @booking.user_id = @user.id
+    @booking.total_price = @booking.flat.price * @booking.nights
     @booking.status = "Pending"
-    @booking.save
+    if @booking.save
+    redirect_to bookings_path
+    else render :new
+    end
   end
 
   def update
@@ -28,7 +29,6 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:nights)
+    params.require(:booking).permit(:nights, :flat_id)
   end
-
 end

@@ -1,5 +1,7 @@
 <h1>Bookings#new</h1>
-<%= simple_form_for @booking do |f| %>
-  <%= f.input :nights %>
-  <%= f.submit "Book!", class: "btn btn-primary" %>
+
+<%= simple_form_for [@flat, @booking] do |f| %>
+<%= f.input :nights %>
+<%= f.hidden_field :flat_id, value: @flat.id %>
+<%= f.submit "Book!", class: "btn btn-primary" %>
 <% end %>
