@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :authenticate_user! only:[:new, :create]
+  before_action :authenticate_user!
 
-  def index
-    @bookings = Booking.all
-  end
+  # def index
+  #   @bookings = Booking.all
+  # end
+
 
   def new
     @booking = Booking.new
@@ -17,6 +18,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.total_price = @flat.price * @booking.nights
     @booking.status = "Pending"
+    @booking.save
   end
 
   def update
@@ -26,7 +28,7 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:user_id, :flat_id, :nights)
+    params.require(:booking).permit(:nights)
   end
 
 end
