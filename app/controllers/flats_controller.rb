@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-
+  skip_before_action :authenticate_registration!, only: [:index, :show]
   def index
     @flats = Flat.all
   end
