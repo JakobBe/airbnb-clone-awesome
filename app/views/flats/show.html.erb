@@ -1,2 +1,6 @@
-<h1>Flats#show</h1>
-<p>Find me in app/views/flats/show.html.erb</p>
+<h1><%= @flat.name %></h1>
+
+<h4>You can  find this amazing flat in  <b><%= @flat.location %></b></h4>
+<h5>Price per night for <%= @flat.name %> </h5>
+<p>This is <%= @flat.user.first_name %>`s flat</p>
+

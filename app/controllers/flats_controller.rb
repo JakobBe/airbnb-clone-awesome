@@ -14,7 +14,7 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
-    @flat.user = current_user
+    @flat.user = User.find_by(registration_id: current_registration.id)
 
     if @flat.save
       redirect_to flat_path(@flat)

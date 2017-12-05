@@ -1,2 +1,17 @@
 <h1>Flats#new</h1>
-<p>Find me in app/views/flats/new.html.erb</p>
+
+
+<% if registration_signed_in? %>
+  <div class="main-create">
+    <%= simple_form_for(@flat) do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :name %>
+      <%= f.input :location %>
+      <%= f.input :price %>
+
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+<% else %>
+  <h3>Please log in <%= link_to "here", new_registration_session_path %></h3>
+<% end %>
