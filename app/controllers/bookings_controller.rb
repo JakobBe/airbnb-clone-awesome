@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking.total_price = @flat.price * @booking.nights
     @booking.status = "Pending"
     @booking.save
+    redirect_to ""
   end
 
   def update
