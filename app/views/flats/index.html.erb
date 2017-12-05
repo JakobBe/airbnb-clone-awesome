@@ -1,16 +1,18 @@
 <h1 class="home-header"> This is a list of all the flats </h1>
 <div class="container">
-  <p><%= link_to "Create New Flat", new_flat_path %></p>
   <div class="row">
       <% @flats.each do |flat|  %>
-          <div class="card col-xs-12 col-sm-6 col-md-4">
-          <h3><%= link_to flat.name, flat_path(flat) %></h3><br>
-          <p> Price :<%= flat.price %></p>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
+              <div class="card-category"><%= flat.location %> </div>
+              <div class="card-description">
+                <h2><%= flat.name %> </h2>
+                <p><%= flat.price %> </p>
+              </div>
+              <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
+              <a class="card-link" href="#" ></a>
+            </div>
           </div>
       <% end %>
   </div>
 </div>
-
-
-
-<%= link_to('Logout', destroy_registration_session_path, method: :delete) %>
