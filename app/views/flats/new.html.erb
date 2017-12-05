@@ -1,7 +1,7 @@
 <h1>Flats#new</h1>
 
 
-<% if user_signed_in? %>
+<% if registration_signed_in? %>
   <div class="main-create">
     <%= simple_form_for(@flat) do |f| %>
       <%= f.error_notification %>
@@ -12,3 +12,6 @@
       <%= f.button :submit %>
     <% end %>
   </div>
+<% else %>
+  <h3>Please log in <%= link_to "here", new_registration_session_path %></h3>
+<% end %>
