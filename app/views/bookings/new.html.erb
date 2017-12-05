@@ -1,16 +1,7 @@
 <h1>Bookings#new</h1>
 
-
-<% if registration_signed_in? %>
-  <div class="booking-create">
-    <%= simple_form_for @booking do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :nights %>
-
-      <%= f.submit "Book!", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-<% else %>
-  <h3>Please log in <%= link_to "here", new_registration_session_path %></h3>
+<%= simple_form_for [@flat, @booking] do |f| %>
+<%= f.input :nights %>
+<%= f.hidden_field :flat_id, value: @flat.id %>
+<%= f.submit "Book!", class: "btn btn-primary" %>
 <% end %>
-
