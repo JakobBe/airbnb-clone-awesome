@@ -1,5 +1,16 @@
 <h1>Bookings#new</h1>
-<%= simple_form_for @booking do |f| %>
-  <%= f.input :nights %>
-  <%= f.submit "Book!", class: "btn btn-primary" %>
+
+
+<% if registration_signed_in? %>
+  <div class="booking-create">
+    <%= simple_form_for @booking do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :nights %>
+
+      <%= f.submit "Book!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% else %>
+  <h3>Please log in <%= link_to "here", new_registration_session_path %></h3>
 <% end %>
+
