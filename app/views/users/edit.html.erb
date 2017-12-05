@@ -1,7 +1,11 @@
-<h1>Users#edit</h1>
-<%= simple_form_for @user do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :homeowner, collection: [['Yes',true], ['No',false]] %>
-  <%= f.submit "Completed!", class: "btn btn-primary" %>
-<% end %>
+<div class="wrap">
+  <h1>Complete your sign up by filling out the following fields</h1>
+  <div class="form-body">
+    <%= simple_form_for @user do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :homeowner, collection: [['Yes',true], ['No',false]] %>
+      <%= f.submit "Completed!", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
