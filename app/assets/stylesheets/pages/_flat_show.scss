@@ -1,21 +1,29 @@
-.show-flat{
+.show_content{
   display: flex;
-
+  justify-content: space-around;
+  margin-top: 50px;
 }
 
-.banner-content{
-  flex: 1;
-  float: right;
+.show_description{
+  float: left;
   text-align: center;
   margin-top: 50px;
 }
 
 .flat-image{
-  width: 450px;
+  width: 100%;
   /* Grow to rest of container */
-  float: left;
-  margin: 20px;
+  // float: left;
+  // margin: 20px;
+  height: 490px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
 }
 
+.show_booking{
+  float: right;
+  border: 2px solid black;
+  padding-bottom: 30px;
+  width: 400px;
+}
 
  // width: 200, height: 300, crop: :fill
