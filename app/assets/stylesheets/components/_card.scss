@@ -6,6 +6,7 @@
   color: white;
   position: relative;
   margin: 10px;
+  padding:10px;
 }
 .card-user {
   position: absolute;
@@ -50,4 +51,15 @@
 
 .fa-heart-o{
   font-size: 30px;
+  color:white;
+}
+
+.card-content{
+  padding-left: 20px;
+}
+
+.card-image{
+  height:250px;
+  margin: 15px;
+  padding:2px;
 }
