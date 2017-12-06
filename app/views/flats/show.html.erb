@@ -1,13 +1,31 @@
-<div class="show-flat">
-  <div class="banner-content">
+
+<div>
+  <% if @flat.photo? %>
+  <%= cl_image_tag @flat.photo.path, class:'flat-image' %>
+  <% end %>
+</div>
+
+
+<div class='show_content'>
+
+  <div class="show_description">
       <h1><%= @flat.name %></h1>
       <p>Beautiful flat in <b><%= @flat.location %></b></p>
       <p>Price per night: <b><%= @flat.price %>€</b></p>
-      <%= link_to "Book now", new_flat_booking_path(@flat), class: "btn btn-danger btn-lg" %>
   </div>
-  <div class="flat-image">
-      <% if @flat.photo? %>
-      <%= cl_image_tag @flat.photo.path%>
-      <% end %>
+
+
+<div class="show_booking">
+  <div class="wrap">
+    <h1 class="text-center">Complete your booking</h1>
+    <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
+      <%= simple_form_for [@flat, @booking] do |f| %>
+        <%= f.input :nights %>
+        <%= f.hidden_field :flat_id, value: @flat.id %>
+        <%= f.submit "Book!", class: "btn btn-primary" %>
+     <% end %>
     </div>
+  </div>
+  </div>
+
 </div>

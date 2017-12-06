@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :edit, :update ]
 
   resources :flats, only: [ :show, :new, :create ] do
-    resources :bookings, only: [ :new, :update, :create ]
+    resources :bookings, only: [ :update, :create ]
   end
   resources :bookings, only: [ :index]
 
