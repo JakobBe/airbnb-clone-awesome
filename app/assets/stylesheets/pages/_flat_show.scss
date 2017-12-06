@@ -1,0 +1,21 @@
+.show-flat{
+  display: flex;
+
+}
+
+.banner-content{
+  flex: 1;
+  float: right;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.flat-image{
+  width: 450px;
+  /* Grow to rest of container */
+  float: left;
+  margin: 20px;
+}
+
+
+ // width: 200, height: 300, crop: :fill
