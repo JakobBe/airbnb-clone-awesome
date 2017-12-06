@@ -2,6 +2,14 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_registration!, only: [:index, :show]
   def index
     @flats = Flat.all
+
+    @flats_map = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = Gmaps4rails.build_markers(@flats_map) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show

@@ -10,6 +10,7 @@
 
 puts "Seeding starts"
 
+cities = ["Frankfurt", "London", "Berlin", "Barcelona", "Milano", "Rome", "Paris", "Amsterdam"]
 Flat.destroy_all
 User.destroy_all
 Registration.destroy_all
@@ -20,7 +21,7 @@ Booking.destroy_all
   reg
   user = User.create(first_name: Faker::StarWars.character, registration_id: reg.id)
   user
-  flat = Flat.create(name: Faker::StarWars.vehicle, location: Faker::StarWars.planet, price: 42, user_id: user.id)
+  flat = Flat.create(name: Faker::Ancient.god, location: cities.sample, price: rand(20..400), user_id: user.id)
   booking = Booking.create(user: user, flat: flat, total_price: 42, status: "Pending")
   booking
 end

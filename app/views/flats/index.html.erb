@@ -1,21 +1,42 @@
 <h1 class="home-header"> This is a list of all the flats </h1>
-<div class="container">
-  <div class="row">
-      <% @flats.each do |flat|  %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
-              <div class="card-category"><%= flat.location %> </div>
-              <div class="card-description">
-                <h2><%=flat.name %> </h2>
-                <p><%= flat.price %> </p>
+<div class="home-container">
+  <div class="container">
+    <div class="row">
+        <% @flats.each do |flat|  %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
+                <div class="card-category"><%= flat.location %> </div>
+                <div class="card-description">
+                  <h2><%=flat.name %> </h2>
+                  <p><%= flat.price %> </p>
+                </div>
+                <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
+                <a class="card-link" href="#" ></a>
+                <%= link_to "", flat_path(flat), class: "card-link" %>
               </div>
-              <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
-              <a class="card-link" href="#" ></a>
-              <%= link_to "", flat_path(flat), class: "card-link" %>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+    </div>
   </div>
+  <div id="map" style="width: 30%; height: 600px;"></div>
 </div>
+
+
+
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @markers.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          <% end %>
+        <% end %>
 
 

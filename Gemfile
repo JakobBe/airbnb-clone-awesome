@@ -5,6 +5,13 @@ gem 'devise'
 
 gem 'faker'
 
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
+gem "coffee-rails"
+gem "gmaps4rails"
+gem "geocoder"
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
