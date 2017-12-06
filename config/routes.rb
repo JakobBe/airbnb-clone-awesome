@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Attachinary::Engine => "/attachinary"
+
   root to: 'flats#index'
 
   devise_for :registrations, :controllers => { registrations: "registrations"}
