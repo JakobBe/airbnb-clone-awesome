@@ -4,7 +4,6 @@
     <%= simple_form_for @user do |f| %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :homeowner, collection: [['Yes',true], ['No',false]] %>
       <%= f.submit "Completed!", class: "btn btn-primary" %>
     <% end %>
   </div>
