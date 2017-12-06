@@ -3,19 +3,37 @@
   <div class="row">
       <% current_user.bookings.each do |book|%>
           <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
-              <div class="card-category"><%= book.flat.location %> </div>
-              <div class="card-description">
-                <h2><%=book.flat.name %> </h2>
-                <p> <strong> <%= book.total_price %> €</strong> </p>
+            <div>
+              <% if book.flat.photo?%>
+                  <div class="card">
+                    <%= cl_image_tag book.flat.photo.path, class: "card-image" %>
+                  </div>
+                <% else %>
+                  <div class="card">
+                    <%= image_tag "flat_placeholder.png", class: "card-image" %>
+                  </div>
+                <% end %>
               </div>
-              <a class="card-link" href="#" ></a>
-              <%= link_to "", flat_path(book.flat_id), class: "card-link" %>
+                <div class="card-content" style="height:150px;"><%= book.flat.location %> </div>
+                <div>
+                  <h2><%=book.flat.name %> </h2>
+                  <p> <strong> <%= book.total_price %> €</strong> </p>
+                </div>
+                <a class="card-link" href="#" ></a>
+                <%= link_to "", flat_path(book.flat_id), class: "card-link" %>
             </div>
           </div>
       <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+
 
 <% if current_user.homeowner == true %>
 <h1 class="home-header"> Booking's Requests </h1>
