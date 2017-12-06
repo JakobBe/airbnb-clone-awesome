@@ -1,10 +1,9 @@
 <div class="wrap">
-  <h1>Complete your sign up by filling out the following fields</h1>
-  <div class="form-body">
+  <h1 class="text-center">Complete your sign up</h1>
+  <div class="form-body col-xs-12 col-sm-6 col-md-4 text-center col-md-offset-4">
     <%= simple_form_for @user do |f| %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :homeowner, collection: [['Yes',true], ['No',false]] %>
       <%= f.input :photo, as: :attachinary %>
       <%= f.submit "Completed!", class: "btn btn-primary" %>
     <% end %>
