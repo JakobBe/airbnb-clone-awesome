@@ -1,5 +1,43 @@
-<h1>Bookings#index</h1>
-<% @bookings.each do |booking| %>
+<h1 class="home-header"> Your bookings </h1>
+<div class="container">
+  <div class="row">
+      <% current_user.bookings.each do |book|%>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
+              <div class="card-category"><%= book.flat.location %> </div>
+              <div class="card-description">
+                <h2><%=book.flat.name %> </h2>
+                <p> <strong> <%= book.total_price %> €</strong> </p>
+              </div>
+              <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
+              <a class="card-link" href="#" ></a>
+              <%= link_to "", flat_path(book.flat_id), class: "card-link" %>
+            </div>
+          </div>
+      <% end %>
+  </div>
+</div>
 
-<%= booking.total_price %>
-<% end %>
+<h1 class="home-header"> Bookings made to your flat </h1>
+<div class="container">
+  <div class="row">
+      <% if current_user.homeowner == true %>
+        <% current_user.flats.each do |flat| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
+              <div class="card-category"><%= flat.name %> </div>
+              <div class="card-description">
+                <% flat.bookings.each do |booking| %>
+                  <h2> <strong> <%= book.total_price %> €</strong></h2>
+                 <p> <%= booking.status %></p>
+              </div>
+              <i class="fa fa-heart-o card-user" aria-hidden="true"></i>
+              <a class="card-link" href="#" ></a>
+              <%= link_to "", flat_path(booking), class: "card-link" %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+</div>

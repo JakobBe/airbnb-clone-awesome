@@ -1,7 +1,11 @@
-<h1>Bookings#new</h1>
 
-<%= simple_form_for [@flat, @booking] do |f| %>
-<%= f.input :nights %>
-<%= f.hidden_field :flat_id, value: @flat.id %>
-<%= f.submit "Book!", class: "btn btn-primary" %>
-<% end %>
+<div class="wrap">
+  <h1 class="text-center">Complete your booking</h1>
+  <div class="form-body col-xs-12 col-sm-6 col-md-4 text-center col-md-offset-4">
+    <%= simple_form_for [@flat, @booking] do |f| %>
+      <%= f.input :nights %>
+      <%= f.hidden_field :flat_id, value: @flat.id %>
+      <%= f.submit "Book!", class: "btn btn-primary" %>
+   <% end %>
+  </div>
+</div>
