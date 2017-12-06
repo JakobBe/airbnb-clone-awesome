@@ -11,11 +11,8 @@
       <%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %>
     <div class="navbar-wagon-item">
-      <!-- <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-      </div> -->
-      <% if current_user.photo_url? %>
-        <%= cl_image_tag current_user.photo.path%>
+      <% if current_user.try(:photo)%>
+        <%= cl_image_tag current_user.photo.path, class:"avatar"%>
       <% end %>
     </div>
   </div>
