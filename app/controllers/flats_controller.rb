@@ -14,13 +14,15 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
-    @flat.user = User.find_by(registration_id: current_registration.id)
-
+    @user = User.find_by(registration_id: current_registration.id)
+    @flat.user = @user
     if @flat.save
+      @user.homeowner = true
       redirect_to flat_path(@flat)
     else
       render :new
     end
+
   end
 
   private
