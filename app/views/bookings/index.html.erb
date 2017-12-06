@@ -1,4 +1,4 @@
-<h1 class="home-header"> Your bookings </h1>
+<h1 class="home-header"> My bookings </h1>
 <div class="container">
   <div class="row">
       <% current_user.bookings.each do |book|%>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<h1 class="home-header"> Bookings made to your flat </h1>
+<h1 class="home-header"> Booking's Requests </h1>
 <div class="container">
   <div class="row">
       <% if current_user.homeowner == true %>
