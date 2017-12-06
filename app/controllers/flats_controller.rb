@@ -26,6 +26,7 @@ class FlatsController < ApplicationController
     @flat.user = @user
     if @flat.save
       @user.homeowner = true
+      @user.save
       redirect_to flat_path(@flat)
     else
       render :new
