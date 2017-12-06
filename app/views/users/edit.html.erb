@@ -5,6 +5,7 @@
       <%= f.input :first_name %>
       <%= f.input :last_name %>
       <%= f.input :homeowner, collection: [['Yes',true], ['No',false]] %>
+      <%= f.input :photo, as: :attachinary %>
       <%= f.submit "Completed!", class: "btn btn-primary" %>
     <% end %>
   </div>

@@ -7,7 +7,7 @@
   </div>
   <div class="flat-image">
       <% if @flat.photo? %>
-      <%= cl_image_tag @flat.photo.path, width: 200, height: 300, crop: :fill %>
+      <%= cl_image_tag @flat.photo.path%>
       <% end %>
     </div>
 </div>
