@@ -1,5 +1,20 @@
 <h1>Bookings#index</h1>
-<% @bookings.each do |booking| %>
+<h2>current user bookings</h2>
+  <% current_user.bookings.each do |book|%>
+    <%= book.flat.name%> <br>
+    <%= book.total_price %> <br>
+    <%= book.status %>
+    <p>***</p>
+  <% end %>
 
-<%= booking.total_price %>
+<h2> Bookings made to your flat</h2>
+<% if current_user.homeowner == true %>
+  <% current_user.flats.each do |flat| %>
+    <h1><%= flat.name %></h1> <br>
+    <% flat.bookings.each do |booking| %>
+      <%= booking.total_price %> <br>
+      <%= booking.status %> <br>
+      <p>***</p>
+    <% end %>
+  <% end %>
 <% end %>
