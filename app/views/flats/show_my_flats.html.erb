@@ -5,11 +5,11 @@
 
       <div class="message">
         <% if flat.photo?%>
-          <div class="card">
+          <div>
           <%= cl_image_tag flat.photo.path, class: "message-avatar" %>
           </div>
         <% else %>
-          <div class="card">
+          <div>
             <%= image_tag "flat_placeholder.png", class: " message-avatar" %>
           </div>
         <% end %>
