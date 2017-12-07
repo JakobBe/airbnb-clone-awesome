@@ -1,34 +1,78 @@
-
-<div>
-  <% if @flat.photo? %>
-  <%= cl_image_tag @flat.photo.path, class:'flat-image' %>
-  <% end %>
-</div>
-
-
-<div class='show_content'>
-
-  <div class="show_description">
-    <h1><%= @flat.name %></h1>
-    <p>Beautiful flat in <b><%= @flat.location %></b></p>
-    <p>Price per night: <b><%= @flat.price %>€</b></p>
-  </div>
-  <div class="show_booking">
-    <div class="wrap">
-      <h1 class="text-center">Complete your booking</h1>
-      <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
-        <%= simple_form_for [@flat, @booking] do |f| %>
-        <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
-        <%= f.input :nights %>
-        <%= f.hidden_field :flat_id, value: @flat.id %>
-        <%= f.submit "Book!", class: "btn btn-primary" %>
+<div class="container">
+  <div class="show-flat">
+    <div class="row">
+      <div>
+        <% if @flat.photo? %>
+        <%= cl_image_tag @flat.photo.path, class:'flat-image' %>
         <% end %>
-        <div id="total-price">
+      </div>
+      <div class='show_content'>
 
+        <div class="show_description">
+          <h1><%= @flat.name %></h1>
+          <p>Beautiful flat in <b><%= @flat.location %></b></p>
+          <p>Price per night: <b><%= @flat.price %>€</b></p>
+        </div>
+      </div>
+
+      <div class="show_booking">
+        <div class="wrap">
+          <h1 class="text-center">
+            Complete your booking
+          </h1>
+          <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
+            <%= simple_form_for [@flat, @booking] do |f| %>
+            <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
+            <%= f.input :nights %>
+            <%= f.hidden_field :flat_id, value: @flat.id %>
+            <%= f.submit "Book!", class: "btn btn-primary" %>
+            <% end %>
+            <div id="total-price">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div class="add-review">
+      <div class="wrap">
+        <h1 class="text-center">
+          Review your stay
+        </h1>
+        <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
+          <%= simple_form_for [@flat, @review] do |f| %>
+          <%= f.input :message %>
+          <%= f.input :rating %>
+          <%= f.submit "Review!", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+
+  </div>
+
+
+  <div class="">
+    <% if @reviews %>
+    <% @reviews.each do |review|  %>
+    <div class="message">
+      <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
+      <div class="message-name">
+        <p style="width: 70px; padding-left: 10px;"> <%= review.user.first_name  %></p>
+      </div>
+      <div class="message-body">
+        <h3><%=review.message %> </h3>
+      </div>
+      <div class="message-status">
+        <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>
+          ' * review.rating %> </p>
+      </div>
+    </div>
+    <%end%>
+    <%end%>
+  </div>
+</div>
 </div>
 
 <script>
@@ -41,4 +85,3 @@
     priceDiv.innerHTML = totalPrice + "€"
   })
 </script>
-
