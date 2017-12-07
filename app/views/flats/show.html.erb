@@ -45,6 +45,7 @@
         <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
           <%= simple_form_for [@flat, @review] do |f| %>
           <%= f.input :message %>
+          <%= f.input :rating %>
           <%= f.submit "Review!", class: "btn btn-primary" %>
           <% end %>
         </div>
@@ -66,7 +67,11 @@
         <h3><%=review.message %> </h3>
       </div>
       <div class="message-status">
-        <p> Rating ****</p>
+        <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>
+          ' * review.rating %> </p>
+
+
+
       </div>
     </div>
     <%end%>
