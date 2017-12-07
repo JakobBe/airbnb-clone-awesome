@@ -53,6 +53,8 @@ GEM
     aws_cf_signer (0.1.3)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -230,6 +232,7 @@ PLATFORMS
 DEPENDENCIES
   attachinary!
   autoprefixer-rails
+  bootstrap-datepicker-rails
   bootstrap-sass
   cloudinary (= 1.1.7)
   coffee-rails
