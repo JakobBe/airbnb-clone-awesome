@@ -23,16 +23,20 @@
               <%= simple_form_for [@flat, @booking] do |f| %>
               <%= f.input :nights %>
               <%= f.hidden_field :flat_id, value: @flat.id %>
+              <%= f.hidden_field :flat_id, value: @flat.id %>
               <%= f.submit "Book!", class: "btn btn-primary" %>
               <% end %>
+              <div id="total-price">
             </div>
           </div>
         </div>
       </div>
   </div>
+  </div>
+
 
 <div class="flat-reviews">
-  <% if @reviews %>
+  <% if @reviews.any? %>
     <% @reviews.each do |review|  %>
       <div class="message">
         <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
@@ -43,10 +47,10 @@
           <h3><%=review.message %> </h3>
         </div>
         <div class="message-status">
-          <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>
-            ' * review.rating %> </p>
+          <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>' * review.rating %> </p>
         </div>
       </div>
+
     <% end %>
   <% end %>
 </div>
@@ -63,10 +67,24 @@
         <%= f.input :rating %>
         <%= f.submit "Review!", class: "btn btn-primary" %>
         <% end %>
-      </div>
+
     </div>
   </div>
 </div>
+</div>
+
+<script>
+  let nightForm = document.getElementById("booking_nights");
+  let priceDiv = document.getElementById("total-price");
 
 
+
+
+
+  nightForm.addEventListener("keyup", function(event){
+    let nights = nightForm.value;
+    let totalPrice = <%= raw @flat.price %> * parseInt(nights);
+    priceDiv.innerHTML = totalPrice + "€"
+  })
+</script>
 

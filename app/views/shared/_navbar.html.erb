@@ -7,42 +7,65 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%  if registration_signed_in? %>
-     <%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %>
-      <% if current_user.flats.length > 1  %>
-        <%= link_to "My flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" %>
-      <% end  %>
-      <%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "My Flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" if current_user.flats.length > 1 %>
+    <%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %>
+
+
     <div class="navbar-wagon-item">
-      <% if current_user.try(:photo)%>
-        <%= cl_image_tag current_user.photo.path, class:"avatar"%>
-      <% end %>
-    </div>
-  </div>
-  <% else %>
-    <%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Sign up', new_registration_registration_path, class:"navbar-wagon-item navbar-wagon-link" %>
-  <% end%>
-</div>
-
-
-  <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <%  if registration_signed_in? %>
-         <li><%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
-         <li><%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
-         <li><%= button_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %></li>
+      <div class="dropdown">
+        <% if current_user.try(:photo)%>
+        <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+        <% else %>
+        <%= image_tag "avatar", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+        <% end %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to "My Profile", user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Edit Profile", edit_user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Log out", destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %></li>
+        </ul>
 
         <% else %>
-         <li><%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
-         <li><%= link_to 'Sign up', new_registration_registration_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
-        <% end  %>
-      </ul>
+        <%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Sign up', new_registration_registration_path, class:"navbar-wagon-item navbar-wagon-link" %>
+        <% end%>
+
+      </div>
     </div>
   </div>
-</div>
 
+
+
+<!-- Dropdown appearing on mobile only -->
+
+
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+
+      <% if registration_signed_in? %>
+
+      <% if current_user.try(:photo)%>
+      <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+        <% else %>
+        <%= image_tag "avatar", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+        <% end %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to "My Profile", user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "My Flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" if current_user.flats.length > 1 %></li>
+          <li><%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
+          <li><%= link_to "Log out", destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %></li>
+        </ul>
+
+     <% else %>
+     <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+     <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+       <li><%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
+       <li><%= link_to 'Sign up', new_registration_registration_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
+     </ul>
+     <% end  %>
+   </div>
+ </div>
+
+</div>
 
