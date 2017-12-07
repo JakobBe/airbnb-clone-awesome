@@ -12,12 +12,24 @@
         <%= link_to "My flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" %>
       <% end  %>
       <%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %>
-    <div class="navbar-wagon-item">
-      <% if current_user.try(:photo)%>
-        <%= cl_image_tag current_user.photo.path, class:"avatar"%>
-      <% end %>
-    </div>
+
+
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% if current_user.try(:photo)%>
+          <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+          <% else %>
+          <%= image_tag "avatar", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+          <% end %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "My Profile", user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
+           <li><%= link_to "Edit Profile", edit_user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
+           <li><%= link_to "Log out", destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %></li>
+         </ul>
+
+       </div>
+     </div>
+
   </div>
   <% else %>
     <%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %>

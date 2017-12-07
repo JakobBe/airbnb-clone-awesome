@@ -2,10 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.5'
 
 gem 'devise'
-
+gem 'bootstrap-datepicker-rails'
 gem 'faker'
-
-
 #image uploading
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
