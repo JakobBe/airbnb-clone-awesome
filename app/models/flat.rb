@@ -3,7 +3,7 @@ class Flat < ApplicationRecord
   after_validation :geocode, if: :location_changed?
 
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   has_attachment :photo
 

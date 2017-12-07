@@ -8,6 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <%  if registration_signed_in? %>
      <%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %>
+     <%= link_to "My flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %>
     <div class="navbar-wagon-item">

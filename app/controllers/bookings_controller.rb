@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
     end
   end
 
+
   def approve
     @booking.status = "Approved"
     @booking.save
@@ -36,6 +37,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     redirect_to bookings_path
   end
+
 
   private
 

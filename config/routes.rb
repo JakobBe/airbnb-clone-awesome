@@ -8,9 +8,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [ :edit, :update ]
 
-  resources :flats, only: [ :show, :new, :create ] do
+  resources :flats do
     resources :bookings, only: [ :update, :create ]
   end
+
+
+
+  get "myflats", to: "flats#show_my_flats"
+
 
   resources :bookings, only: [ :index, :destroy] do
     member do
@@ -18,6 +23,4 @@ Rails.application.routes.draw do
       patch 'decline'
     end
   end
-
-
 end
