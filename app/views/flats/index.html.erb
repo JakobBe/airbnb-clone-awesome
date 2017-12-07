@@ -8,46 +8,33 @@
 
 <div class="home-container">
 
-  <div class="container">
-
-    <div class="row">
+    <div class="row flat-cards">
 
       <% @flats.each do |flat|  %>
-      <div class="col-xs-12 col-sm-6 col-md-4 flat-card">
-
-        <div >
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
           <% if flat.photo?%>
-          <div class="card">
             <%= cl_image_tag flat.photo.path, class: "card-image" %>
-          </div>
           <% else %>
-          <div class="card">
             <%= image_tag "flat_placeholder.png", class: "card-image" %>
-          </div>
           <% end %>
-        </div>
 
-        <div class="card-content">
-          <h3><%=flat.name %> </h2>
-            <h4><%= flat.location %></h4>
-            <p> Price per night: $<%= flat.price %>
-            </p>
-            <p> Rating ****</p>
-            <a class="card-link" href="#" ></a>
+          <div class="card-content">
+            <h3><%=flat.name %> </h3>
+            <h4>In <%= flat.location %></h4>
+            <p class="card-price"> Price per night: $<%= flat.price %></p>
+            <p class="card-rating"> Rating ****</p>
             <%= link_to "", flat_path(flat), class: "card-link" %>
           </div>
 
+          </div>
         </div>
 
         <% end %>
 
       </div>
 
-    </div>
-
     <div id="map" style="width: 30%; height: 600px;"></div>
-
-  </div>
 
 </div>
 
