@@ -38,7 +38,7 @@
   nightForm.addEventListener("keyup", function(event){
     let nights = nightForm.value;
     let totalPrice = <%= raw @flat.price %> * parseInt(nights);
-    priceDiv.innerHTML = totalPrice
+    priceDiv.innerHTML = totalPrice + "€"
   })
 </script>
 
