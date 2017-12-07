@@ -1,13 +1,10 @@
 .card {
-  height: 200px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  background-position: center;
-  color: white;
+  height: 240px;
+  width: 300px;
+  color: black;
   position: relative;
   margin: 10px;
   padding:10px;
-  padding-right: 25px;
 }
 .card-user {
   position: absolute;
@@ -23,19 +20,7 @@
   font-size: 15px;
   text-transform: uppercase;
 }
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
-  font-size: 24px;
-}
-.card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
+
 .card-link {
   position: absolute;
   top: 0;
@@ -50,18 +35,46 @@
   opacity: 0.1;
 }
 
-.fa-heart-o{
-  font-size: 30px;
-  color:white;
-}
-
 .card-content{
-  padding-left: 20px;
+  background-color: rgb(230,230,230);
+  font-size: 8px;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-rows: 50% 25% 25%;
+  border-radius: 5px;
+
+  h3 {
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 13px;
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 10px;
+    margin-left: 10px;
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+  }
+  .card-price {
+    margin-top: 10px;
+    grid-row: 3 / span 1;
+    grid-column: 3 / span 1;
+    white-space: pre-line;
+  }
+  .card-rating {
+    margin-top: 5px;
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 1;
+  }
 }
 
 .card-image{
-  height:190px;
+  height: 70%;
   width: 100%;
-  margin: 15px;
-  padding:2px;
+  border-radius: 5px;
 }
