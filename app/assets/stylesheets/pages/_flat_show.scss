@@ -26,5 +26,29 @@
   width: 400px;
 }
 
+.flat-banner {
+  height: 400px;
+}
+
+
+.flat-info-wrapper{
+  display:flex;
+  padding: 150px;
+}
+
+.flat-booking-form {
+  flex: 0 0 40%;
+  position: sticky;
+  top:0;
+}
+
+.flat-description {
+  flex: 0 0 60%;
+  padding-left:10%;
+}
+
+.flat-reviews {
+  padding: 0px 150px;
  // width: 200, height: 300, crop: :fill
+}
 
