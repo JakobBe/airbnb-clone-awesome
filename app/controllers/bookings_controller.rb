@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:approve, :decline, :destroy]
 
   def index
     @bookings = Booking.all
@@ -17,13 +18,32 @@ class BookingsController < ApplicationController
     end
   end
 
-  def update
+  def approve
+    @booking.status = "Approved"
+    @booking.save
 
+    redirect_to bookings_path
+  end
+
+  def decline
+    @booking.status = "Declined"
+    @booking.save
+
+    redirect_to bookings_path
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_path
   end
 
   private
 
   def bookings_params
     params.require(:booking).permit(:nights, :flat_id)
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

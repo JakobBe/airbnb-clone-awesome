@@ -16,7 +16,7 @@ User.destroy_all
 Registration.destroy_all
 Booking.destroy_all
 
-10.times do
+5.times do
   reg = Registration.create(email: Faker::Internet.email, password: "123456")
   reg
   user = User.create(first_name: Faker::StarWars.character, registration_id: reg.id)

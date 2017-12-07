@@ -2,28 +2,44 @@
 <div class="container">
   <div class="row">
       <% current_user.bookings.each do |book|%>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div>
+
+            <div class="message">
               <% if book.flat.photo?%>
-                  <div class="card">
-                    <%= cl_image_tag book.flat.photo.path, class: "card-image" %>
+                  <div class="message-avatar">
+                    <%= cl_image_tag book.flat.photo.path, class: "message-avatar" %>
                   </div>
                 <% else %>
-                  <div class="card">
-                    <%= image_tag "flat_placeholder.png", class: "card-image" %>
+                  <div class="message-avatar">
+                    <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
                   </div>
                 <% end %>
+              <div class="message-location">
+                <h3><b>In <%= book.flat.location %></b></h3>
+                <p>-------</p>
               </div>
-                <div class="card-content" style="height:150px;"><%= book.flat.location %> </div>
-                <div>
-                  <h2><%=book.flat.name %> </h2>
-                  <p> <strong> <%= book.total_price %> €</strong> </p>
-                </div>
-                <a class="card-link" href="#" ></a>
-                <%= link_to "", flat_path(book.flat_id), class: "card-link" %>
+              <div class="message-body">
+                <p><strong> <%= book.flat.name %></strong></p>
+                <p>
+                   Amazing flat in <b><%= book.flat.location %></b> for <b><%= book.nights %></b> nights.
+                </p>
+              </div>
+              <div class="message-status">
+                <% if book.status == "Approved" %>
+                  <p class="status accepted"><%= book.status %></p>
+                  <p class="price">Total price: <%= book.total_price %>€</p>
+                <% elsif book.status == "Declined" %>
+                  <p class="status declined"><%= book.status %></p>
+                  <p class="price">Total price: <%= book.total_price %>€</p>
+                <% else %>
+                  <p class="status pending"><%= book.status %></p>
+                  <p class="price">Total price: <%= book.total_price %>€</p>
+                <% end %>
+                <%= link_to "", booking_path(book), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this booking?" }, class: "message-delete fa fa-minus-square" %>
+
+
+              </div>
             </div>
-          </div>
-      <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -31,27 +47,50 @@
 
 
 
-
-
-
-
-<% if current_user.homeowner == true %>
+<!-- current_user.flats.last.bookings.last.flat.photo -->
+<% if current_user.homeowner %>
 <h1 class="home-header"> Booking's Requests </h1>
 <div class="container">
   <div class="row">
         <% current_user.flats.each do |flat| %>
-          <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random');">
-              <div class="card-category"><%= flat.name %> </div>
-              <div class="card-description">
-                <% flat.bookings.each do |booking| %>
-                  <h2> <strong> <%= booking.total_price %> €</strong></h2>
-                 <p> <%= booking.status %></p>
+          <% flat.bookings.each do |booking| %>
+          <div class="message">
+              <% if booking.user.photo?%>
+                  <div class="message-avatar">
+                    <%= cl_image_tag booking.user.photo.path, class: "message-avatar" %>
+                  </div>
+                <% else %>
+                  <div class="message-avatar">
+                    <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
+                  </div>
+                <% end %>
+              <div class="message-location">
+                <h3><b><%= booking.user.first_name %></b></h3>
+                <p>-------</p>
               </div>
-              <a class="card-link" href="#" ></a>
-              <%= link_to "", flat_path(booking), class: "card-link" %>
+              <div class="message-body">
+                <p><strong> Request for <%= booking.flat.name %></strong></p>
+                <p>
+                   <%= booking.user.first_name + " " + booking.user.last_name %> wants to stay at your amazing flat in <b><%= booking.flat.location %></b> for <b><%= booking.nights %></b> nights.
+                </p>
+              </div>
+
+              <div class="message-status">
+                <% if booking.status == "Pending" %>
+                  <%= link_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary" %>
+                  <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+                  <p class="price">Total price: <%= booking.total_price %>€</p>
+
+                <% elsif booking.status == "Approved" %>
+                  <p>You <b class="status accepted">accepted</b> the request</p>
+                  <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+                <% elsif booking.status == "Declined" %>
+                  <p>You <b class="status declined">declined</b> the request</p>
+                  <%= link_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary" %>
+                <% end %>
+                <%= link_to "", booking_path(booking), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this request?" }, class: "message-delete fa fa-minus-square" %>
+              </div>
             </div>
-          </div>
           <% end %>
         <% end %>
   </div>

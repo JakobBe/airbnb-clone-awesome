@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resources :flats, only: [ :show, :new, :create ] do
     resources :bookings, only: [ :update, :create ]
   end
-  resources :bookings, only: [ :index]
+
+  resources :bookings, only: [ :index, :destroy] do
+    member do
+      patch 'approve'
+      patch 'decline'
+    end
+  end
+
 
 end
