@@ -3,26 +3,28 @@
   text-align: center;
   font-size: 60px;
   margin-bottom: 60px;
-  border-bottom: 1px solid slategrey;
-  padding: 30px;
+  padding: 18px;
 }
 
 .home-container{
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   background-color: white;
-  .row{
-    padding-top:15px;
-  }
-}
-
-.container {
-  width: 70%;
 }
 
 
 .flat-card{
   padding: 2px;
   width: 300px;
+}
+
+.flat-cards {
+  flex: 0 0 70%;
+  padding: 0 0px;
+  margin: 0px;
+  margin-top: 20px;
+}
+
+#map {
+  flex: 0 0 30%;
 }

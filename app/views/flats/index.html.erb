@@ -8,13 +8,11 @@
 
 <div class="home-container">
 
-  <div class="container">
-
-    <div class="row">
+    <div class="row flat-cards">
 
       <% @flats.each do |flat|  %>
-      <div class="col-xs-12 col-sm-6 col-md-4 card">
-
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card">
           <% if flat.photo?%>
             <%= cl_image_tag flat.photo.path, class: "card-image" %>
           <% else %>
@@ -29,17 +27,14 @@
             <%= link_to "", flat_path(flat), class: "card-link" %>
           </div>
 
+          </div>
         </div>
 
         <% end %>
 
       </div>
 
-    </div>
-
     <div id="map" style="width: 30%; height: 600px;"></div>
-
-  </div>
 
 </div>
 
