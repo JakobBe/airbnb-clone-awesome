@@ -17,10 +17,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def update
-
-  end
-
   private
 
   def bookings_params

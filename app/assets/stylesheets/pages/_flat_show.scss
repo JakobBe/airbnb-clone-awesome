@@ -27,3 +27,16 @@
 }
 
  // width: 200, height: 300, crop: :fill
+.my-flat{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+
+  .card{
+    width:200px;
+  }
+
+  .my-flat-info{
+    flex:1;
+  }
+}
