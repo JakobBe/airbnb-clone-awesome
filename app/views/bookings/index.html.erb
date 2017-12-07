@@ -34,7 +34,7 @@
                   <p class="status pending"><%= book.status %></p>
                   <p class="price">Total price: <%= book.total_price %>€</p>
                 <% end %>
-                <%= link_to "", booking_path(book), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this booking?" }, class: "message-delete fa fa-minus-square" %>
+                <%= link_to "", booking_path(book), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this booking?" }, class: "message-delete fa fa-trash" %>
 
 
               </div>
@@ -88,7 +88,7 @@
                   <p>You <b class="status declined">declined</b> the request</p>
                   <%= link_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary" %>
                 <% end %>
-                <%= link_to "", booking_path(booking), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this request?" }, class: "message-delete fa fa-minus-square" %>
+                <%= link_to "", booking_path(booking), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this request?" }, class: "message-delete fa fa-trash" %>
               </div>
             </div>
           <% end %>
