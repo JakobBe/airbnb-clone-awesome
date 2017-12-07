@@ -35,6 +35,7 @@
          <li><%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
          <li><%= link_to "Bookings", bookings_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
          <li><%= button_to 'Log out', destroy_registration_session_path, method: :delete, class:"navbar-wagon-item navbar-wagon-link" %></li>
+
         <% else %>
          <li><%= link_to "Log in", new_registration_session_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
          <li><%= link_to 'Sign up', new_registration_registration_path, class:"navbar-wagon-item navbar-wagon-link" %></li>
