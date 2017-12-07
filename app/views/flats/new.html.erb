@@ -1,14 +1,18 @@
 <div class="wrap">
-  <h1>List a new flat</h1>
+  <h1 class="text-center">List a new flat</h1>
 
-  <div class="form-body">
-    <%= simple_form_for(@flat) do |f| %>
-      <%= f.error_notification %>
-      <%= f.input :name %>
-      <%= f.input :location %>
-      <%= f.input :price %>
-      <%= f.input :photo, as: :attachinary %>
-      <%= f.button :submit %>
-    <% end %>
+  <div class="form-body container padded-top">
+    <div class="row">
+     <div class="col-md-6 col-md-offset-3">
+       <%= simple_form_for(@flat) do |f| %>
+        <%= f.error_notification %>
+       <%= f.input :name %>
+       <%= f.input :location, input_html: {id: 'flat_address'} %>
+       <%= f.input :price %>
+       <%#= f.input :photo, as: :attachinary %>
+       <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+     </div>
+    </div>
   </div>
 </div>
