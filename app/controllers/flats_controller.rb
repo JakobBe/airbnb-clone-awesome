@@ -2,6 +2,11 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_registration!, only: [:index, :show]
   def index
     @flats = Flat.all
+    if params[:search]
+      @flats = Flat.near(params[:search], 50).order("created_at DESC")
+    else
+      @flats = Flat.all.order("created_at DESC")
+    end
 
     @flats_map = Flat.where.not(latitude: nil, longitude: nil)
 
@@ -10,6 +15,7 @@ class FlatsController < ApplicationController
       marker.lng flat.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
+
   end
 
   def show
@@ -58,7 +64,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:location, :name, :price, :photo)
+    params.require(:flat).permit(:location, :name, :price, :photo, :search)
   end
 
 

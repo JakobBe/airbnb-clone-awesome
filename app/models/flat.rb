@@ -6,4 +6,5 @@ class Flat < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
   has_attachment :photo
+
 end

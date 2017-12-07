@@ -13,8 +13,14 @@ Rails.application.routes.draw do
   end
 
 
+
   get "myflats", to: "flats#show_my_flats"
 
-  resources :bookings, only: [ :index]
 
+  resources :bookings, only: [ :index, :destroy] do
+    member do
+      patch 'approve'
+      patch 'decline'
+    end
+  end
 end
