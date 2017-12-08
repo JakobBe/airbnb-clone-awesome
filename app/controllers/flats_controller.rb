@@ -16,6 +16,14 @@ class FlatsController < ApplicationController
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
 
+    respond_to do |format|
+      format.html {
+        # redirect_to flats_path
+      }
+      format.js{
+
+      }
+    end
   end
 
   def show
