@@ -14,6 +14,7 @@
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+  padding-right: 317px;
 }
 
 /* User Avatar */
@@ -82,3 +83,22 @@
   top: 0;
   width: 100%
 }
+
+#search{
+  width: 350px;
+  font-size: 25px;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.search_btn{
+  font-size: 25px;
+   background-color: white;
+  border: 1px solid #cccccc;
+  //border-radius: 1rem;
+  color: #696969;
+  padding: 0.5rem;
+  text-transform: lowercase;
+}
+
+index #search {display:none}

@@ -1,34 +1,48 @@
-<%= render 'shared/banner'  %>
+<div id="home">
+  <%= render 'shared/banner'  %>
 
-<h1 class="home-header"></h1>
+  <h1 class="home-header"></h1>
 
-<% if @flats.blank? %>
-  <h4>Unfortunately there are no flats near <%= params[:search] %>.</h4>
-<% end %>
+  <% if @flats.blank? %>
+    <h4>Unfortunately there are no flats near <%= params[:search] %>.</h4>
+  <% end %>
 
-<div class="home-container">
+  <div class="home-container">
 
-  <%= render "shared/card" %>
+    <%= render "shared/card" %>
 
 
-<div id="map" style="width: 30%; height: 600px;"></div>
+  <div id="map" style="width: 30%; height: 600px;"></div>
+
+  </div>
+
+
+  <% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+  markers = handler.addMarkers(<%= raw @markers.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  if (markers.length == 0) {
+  handler.getMap().setZoom(2);
+  } else if (markers.length == 1) {
+  handler.getMap().setZoom(14);
+  }
+  });
+  <% end %>
+  <% end %>
 
 </div>
-
-
-<% content_for(:after_js) do %>
-<%= javascript_tag do %>
-var handler = Gmaps.build('Google');
-handler.buildMap({ internal: { id: 'map' } }, function() {
-markers = handler.addMarkers(<%= raw @markers.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-if (markers.length == 0) {
-handler.getMap().setZoom(2);
-} else if (markers.length == 1) {
-handler.getMap().setZoom(14);
-}
-});
-<% end %>
-<% end %>
-
+<script>
+  searchNav = document.getElementById("search_navbar");
+    var myScrollFunc = function() {
+      var y = window.scrollY;
+      if (y >= 363) {
+        searchNav.hidden = false
+      } else {
+        searchNav.hidden = true
+      }
+    };
+  window.addEventListener("scroll", myScrollFunc);
+</script>
