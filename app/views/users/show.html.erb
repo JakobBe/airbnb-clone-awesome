@@ -1,8 +1,8 @@
-<div class="profile-pic">
+
 <% if @user.photo? %>
-<%= cl_image_tag @user.photo.path %>
+<%= cl_image_tag @user.photo.path, class: "profile-pic" %>
 <% end %>
-</div>
+
 <div class="profile-box ">
 <div class="show_description text-center">
 

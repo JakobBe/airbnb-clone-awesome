@@ -1,6 +1,5 @@
 <h1 class="home-header"> My bookings </h1>
-<div class="container">
-  <div class="row">
+  <div class="booking-my">
       <% current_user.bookings.each do |book|%>
 
             <div class="message">
@@ -41,7 +40,7 @@
             </div>
     <% end %>
   </div>
-</div>
+
 
 
 
@@ -50,8 +49,7 @@
 <!-- current_user.flats.last.bookings.last.flat.photo -->
 <% if current_user.homeowner %>
 <h1 class="home-header"> Booking's Requests </h1>
-<div class="container">
-  <div class="row">
+<div class="booking-requests">
         <% current_user.flats.each do |flat| %>
           <% flat.bookings.each do |booking| %>
           <div class="message">
@@ -61,7 +59,7 @@
                   </div>
                 <% else %>
                   <div class="message-avatar">
-                    <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
+                    <%= image_tag "avatar.jpg", class: "message-avatar" %>
                   </div>
                 <% end %>
               <div class="message-location">
@@ -96,5 +94,4 @@
           <% end %>
         <% end %>
   </div>
-</div>
 <% end %>
