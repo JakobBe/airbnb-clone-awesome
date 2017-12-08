@@ -1,6 +1,6 @@
 <div class='banner'>
   <% if @flat.photo? %>
-    <%= cl_image_tag current_user.photo.path, class:"flat-image"%>
+    <%= cl_image_tag @flat.photo.path, class:"flat-image"%>
   <% else %>
     <%= image_tag "flat_placeholder", class:"flat-image"%>
     </div>
@@ -10,17 +10,16 @@
 <div class="wrapper-white">
   <div class="container">
     <div class="row">
-
-      <div class="col-md-6 col-sm-12">
-        <div class="flat-description">
-          <div class="text-center">
-            <h1 class="added-margin-bottom-30px"><%= @flat.name %></h1>
-            <p class="added-margin-bottom-15px">Beautiful flat in <b><%= @flat.location %></b></p>
-            <p class="added-margin-bottom-15px">Price per night: <b><%= @flat.price %>€</b></p>
-            <p class="added-margin-bottom-15px">Description: <b><%= @flat.description %></b></p>
-          </div>
-        </div>
-      </div>
+          <div class="col-md-6 col-sm-12">
+              <div class="flat-description">
+                <div class="text-center added-margin-top">
+                  <h1 class="added-margin-bottom-30px"><%= @flat.name %></h1>
+                  <p class="added-margin-bottom-15px">Beautiful flat in <b><%= @flat.location %></b></p>
+                  <p class="added-margin-bottom-15px">Price per night: <b><%= @flat.price %>€</b></p>
+                  <p class="added-margin-bottom-15px">Description: <b><%= @flat.description %></b></p>
+                </div>
+              </div>
+            </div>
 <!--  <div class="flat-booking-form"> -->
   <div class="col-md-6 col-sm-12">
     <div class="col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
@@ -36,9 +35,15 @@
               <%= f.submit "Reserve Now", id: "booking-button" %>
                 <% end %>
               <div id="total-price"></div>
+            </div>
           </div>
-      </div>
+        </div>
+
+    </div>
   </div>
+</div>
+
+
 
 <div class="all-reviews">
   <div class="flat-reviews">
