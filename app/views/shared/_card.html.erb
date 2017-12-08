@@ -1,4 +1,4 @@
-<div class="row flat-cards">
+<div class="row flat-cards js-cards-wrapper">
 
     <ul class="cards">
   <% @flats.each do |flat|  %>
@@ -8,9 +8,11 @@
 
           <div class="card__content">
           <div class="card__title"> <%= flat.location %> </div>
+          <p class="card__text"> <%= flat.name %> </p>
           <p class="card__text"> $ <%= flat.price %> </p>
+          <p class="card__text"> <%= flat.description %> </p>
           <div>
-            <%= link_to "", flat_path(flat), class: "card-link btn btn--block card__btn" %>
+            <%= link_to "See more", flat_path(flat), class: "card-link btn btn--block card__btn" %>
           </div>
           </div>
         </div>

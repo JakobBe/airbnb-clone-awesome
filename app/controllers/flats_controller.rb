@@ -16,6 +16,14 @@ class FlatsController < ApplicationController
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
 
+    respond_to do |format|
+      format.html {
+        # redirect_to flats_path
+      }
+      format.js{
+
+      }
+    end
   end
 
   def show
@@ -66,7 +74,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:location, :name, :description, :price, :photo, :search)
+    params.require(:flat).permit(:location, :name, :price, :description, :photo, :search)
   end
 
 
