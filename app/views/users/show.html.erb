@@ -1,15 +1,23 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="container">
+  <div class="row ">
+    <div class="col-lg-12">
+      <div>
+        <div class="col-md-4">
+          <div class="profile-card text-center">
+            <img class="img-responsive" src="https://images.unsplash.com/photo-1454678904372-2ca94103eca4?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1925">
+            <div class="profile-info">
 
-<% if @user.photo? %>
-<%= cl_image_tag @user.photo.path, class: "profile-pic" %>
-<% end %>
-
-<div class="profile-box ">
-<div class="show_description text-center">
-
-  <h1><%= @user.first_name %></h1>
-  <h1><%= @user.last_name %></h1>
-  <h1><%= link_to 'edit this profile', edit_user_path(current_user) %></h1>
-
+              <div class="profile-pic"> <% if @user.photo? %>
+                <%= cl_image_tag("#{@user.photo.path}",:width=>150, :height=>150,:gravity=>"face", :radius=>"max", :crop=>"fill")%>
+                <% end %>
+              </div>
+              <h2 class="hvr-underline-from-center"><%= @user.first_name %><span><%= @user.last_name %></span></h2> <br>
+              <%= link_to 'edit this profile', edit_user_path(current_user) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-
