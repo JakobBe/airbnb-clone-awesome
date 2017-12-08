@@ -47,7 +47,7 @@
 
 <div class="all-reviews">
   <div class="flat-reviews">
-    <% if @reviews.any? %>
+    <% if @reviews %>
       <% @reviews.each do |review|  %>
         <div class="message">
           <%= image_tag "flat_placeholder.png", class: "message-avatar" %>

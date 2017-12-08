@@ -28,7 +28,7 @@
         <% if current_user.try(:photo)%>
         <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
         <% else %>
-        <%= image_tag "avatar", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+        <%= image_tag "avatar.jpg", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
         <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><%= link_to "My Profile", user_path(current_user), class:"navbar-wagon-item   navbar-wagon-link" %></li>
@@ -57,7 +57,7 @@
       <% if current_user.try(:photo)%>
       <%= cl_image_tag current_user.photo.path, class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
       <% else %>
-      <%= image_tag "avatar", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
+      <%= image_tag "avatar.jpg", class:"avatar dropdown-toggle", id:"navbar-wagon-menu", data: {toggle: 'dropdown'}%>
       <% end %>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "My Profile", user_path(current_user), class:"navbar-wagon-item navbar-wagon-link" %></li>
