@@ -15,29 +15,29 @@
                 <% end %>
               <div class="message-location">
                 <h3><b>In <%= book.flat.location %></b></h3>
-                <p>-------</p>
               </div>
               <div class="message-body">
                 <p><strong> <%= book.flat.name %></strong></p>
                 <p>
-                   Amazing flat in <b><%= book.flat.location %></b> for <b><%= book.nights %></b> nights.
+                   Amazing flat in <b><%= book.flat.location %> </b> starting from <br><b><%= book.date.strftime('%B %e, %Y') %></b> for <b><%= book.nights %></b> nights.
                 </p>
               </div>
               <div class="message-status">
                 <% if book.status == "Approved" %>
-                  <p class="status accepted"><%= book.status %></p>
+                  <p class="status accepted status-top"><%= book.status %></p>
                   <p class="price">Total price: <%= book.total_price %>€</p>
                 <% elsif book.status == "Declined" %>
-                  <p class="status declined"><%= book.status %></p>
+                  <p class="status declined status-top"><%= book.status %></p>
                   <p class="price">Total price: <%= book.total_price %>€</p>
                 <% else %>
-                  <p class="status pending"><%= book.status %></p>
+                  <p class="status pending status-top"><%= book.status %></p>
                   <p class="price">Total price: <%= book.total_price %>€</p>
                 <% end %>
+                </div>
                 <%= link_to "", booking_path(book), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this booking?" }, class: "message-delete fa fa-trash" %>
 
 
-              </div>
+
             </div>
     <% end %>
   </div>
@@ -66,12 +66,11 @@
                 <% end %>
               <div class="message-location">
                 <h3><b><%= booking.user.first_name %></b></h3>
-                <p>-------</p>
               </div>
               <div class="message-body">
                 <p><strong> Request for <%= booking.flat.name %></strong></p>
                 <p>
-                   <%= booking.user.first_name + " " + booking.user.last_name %> wants to stay at your amazing flat in <b><%= booking.flat.location %></b> for <b><%= booking.nights %></b> nights.
+                   <%= booking.user.first_name + " " + booking.user.last_name %> wants to stay at your amazing flat in <b><%= booking.flat.location %></b> <br> for <b><%= booking.nights %></b> nights starting from <b><%= booking.date.strftime('%B %e, %Y') %></b>.
                 </p>
               </div>
 
@@ -82,14 +81,17 @@
                   <p class="price">Total price: <%= booking.total_price %>€</p>
 
                 <% elsif booking.status == "Approved" %>
-                  <p>You <b class="status accepted">accepted</b> the request</p>
+                  <p class="status-status">You <b class="status accepted">accepted</b> the request</p>
                   <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+                  <p class="price">Total price: <%= booking.total_price %>€</p>
                 <% elsif booking.status == "Declined" %>
-                  <p>You <b class="status declined">declined</b> the request</p>
+                  <p class="status-status">You <b class="status declined">declined</b> the request</p>
                   <%= link_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary" %>
+                  <p class="price">Total price: <%= booking.total_price %>€</p>
                 <% end %>
+                </div>
                 <%= link_to "", booking_path(booking), method: :delete,  data: { confirm: current_user.first_name + " are you sure you want to delete this request?" }, class: "message-delete fa fa-trash" %>
-              </div>
+
             </div>
           <% end %>
         <% end %>
