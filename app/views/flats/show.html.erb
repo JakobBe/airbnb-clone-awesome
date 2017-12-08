@@ -51,7 +51,6 @@
           <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>' * review.rating %> </p>
         </div>
       </div>
-
     <% end %>
   <% end %>
 </div>
@@ -75,17 +74,15 @@
 </div>
 
 <script>
+
   let nightForm = document.getElementById("booking_nights");
   let priceDiv = document.getElementById("total-price");
-
-
-
-
 
   nightForm.addEventListener("keyup", function(event){
     let nights = nightForm.value;
     let totalPrice = <%= raw @flat.price %> * parseInt(nights);
     priceDiv.innerHTML = totalPrice + "€"
   })
+
 </script>
 
