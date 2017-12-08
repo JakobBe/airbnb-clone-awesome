@@ -35,10 +35,9 @@ ActiveRecord::Schema.define(version: 20171208110405) do
     t.string   "status"
     t.integer  "user_id"
     t.integer  "flat_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "nights"
-    t.date     "date_of_tour"
     t.datetime "date"
     t.index ["flat_id"], name: "index_bookings_on_flat_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree

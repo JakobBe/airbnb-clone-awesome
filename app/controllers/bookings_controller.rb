@@ -15,8 +15,9 @@ class BookingsController < ApplicationController
     @booking.status = "Pending"
 
     if @booking.save
-    @booking.total_price = @booking.flat.price * @booking.nights
-    redirect_to bookings_path
+      @booking.total_price = @booking.flat.price * @booking.nights
+      @booking.save
+      redirect_to bookings_path
     else render 'flats/show'
     end
   end

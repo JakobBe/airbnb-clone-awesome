@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @booking = Booking.new
     @flat = Flat.find(params[:flat_id])
     @user = current_user
     @review = Review.new(reviews_params)
@@ -13,7 +14,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to flat_path(@flat)
     else
-     render :new
+     render 'flats/show'
     end
   end
 

@@ -6,6 +6,10 @@ class Flat < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  validates :name, :location, :price, :description, presence: true
+  validates :name, uniqueness: true
+  validates :price, numericality: { greater_than: 0 }
+
   has_attachment :photo
 
 end
