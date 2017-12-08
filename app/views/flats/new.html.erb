@@ -8,6 +8,7 @@
         <%= f.error_notification %>
        <%= f.input :name %>
        <%= f.input :location, input_html: {id: 'flat_address'} %>
+       <%= f.input :description %>
        <%= f.input :price %>
        <%= f.input :photo, as: :attachinary %>
        <%= f.button :submit, class: 'btn btn-primary' %>
