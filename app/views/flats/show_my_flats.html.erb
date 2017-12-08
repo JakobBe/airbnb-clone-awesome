@@ -1,38 +1,33 @@
 <h1 class="home-header"> Your Flats </h1>
-<div class="container">
-  <div class="row">
+  <div class="flats-my">
     <% @flats.each do |flat|  %>
 
-      <div class="message">
+      <div class="flat-grid">
         <% if flat.photo?%>
-          <div>
-          <%= cl_image_tag flat.photo.path, class: "message-avatar" %>
-          </div>
+          <%= cl_image_tag flat.photo.path, class: "flat-grid-picture" %>
         <% else %>
-          <div>
-            <%= image_tag "flat_placeholder.png", class: " message-avatar" %>
-          </div>
+            <%= image_tag "flat_placeholder.png", class: " flat-grid-picture" %>
         <% end %>
 
-        <div class="message-name">
-          <h4><%= flat.location %></h4>
+        <div class="flat-location">
+          <h4> Location: <b> <%= flat.location %></b></h4>
         </div>
-        <div class="message-body">
-          <h3><%=flat.name %> </h2>
+        <div class="flat-name">
+          <h4><b><%= flat.name %></b></h4>
+        </div>
+        <div class="flat-price">
+          <h4> Price per night: <b>$<%= flat.price %></b></h4>
+        </div>
+        <div class="flat-description">
+          <p><%= flat.description %></p>
+          <p class="flat-rating"> Rating ****</p>
+          <%= link_to 'Delete', flat_path(flat), method: :delete, class: "flat-delete"%>
+        </div>
 
-          <p> Price per night: $<%= flat.price %>
-          </p>
-          <p> Rating ****</p>
-        </div>
-        <div class="message-status">
-         <div class="my-flat-delete">
-            <%= link_to 'Delete', flat_path(flat), method: :delete, class:"navbar-wagon-item navbar-wagon-link"%>
-          </div>
-        </div>
       </div>
     <% end %>
   </div>
-</div>
+
 
 
 
