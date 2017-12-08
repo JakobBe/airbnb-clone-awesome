@@ -1,63 +1,65 @@
-.show-flat{
-  display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
-}
-
-.show_description{
-  float: left;
-  text-align: center;
-  margin-top: 50px;
-}
-
 .flat-image{
   width: 100%;
-  /* Grow to rest of container */
-  float: left;
-  margin: 20px;
-  height: 490px;
-  // /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  height: 100%;
+
 }
 
-.show_booking{
-  float: right;
-  border: 2px solid black;
-  padding-bottom: 30px;
-  width: 400px;
-}
-
-.flat-banner {
-  height: 400px;
-}
-
-
-.flat-info-wrapper{
-  display:flex;
-  padding: 150px;
-}
-
-.flat-booking-form {
-  flex: 0 0 40%;
-  position: sticky;
-  top:0;
+.wrapper-white{
+  background-color:#ffffff;
 }
 
 .flat-description {
-  flex: 0 0 60%;
-  padding-left:10%;
+  margin: 80px 75px;
+
 }
+
+
+.flat-booking-form{
+  margin: 55px 45px;
+  padding: 0 50px;
+  border: 1px solid #e4e4e4;
+  padding-bottom: 53px
+}
+
+.input-field{
+  width: 100px;
+}
+
+.added-margin-bottom-30px{
+  margin-bottom: 30px;
+}
+
+.added-margin-bottom-15px{
+  margin-bottom: 15px;
+}
+
+.all-reviews{
+  background-color: #EDEDED;
+  padding: 100px 20px;
+}
+
 
 .flat-reviews {
   padding: 0px 150px;
 }
 
+.add-review{
+  background-color: #EDEDED;
+}
+
+
+.review-form{
+  border: 1px solid black;
+  padding: 50px 100px;
+}
+
 #total-price {
   background-color: white;
-  width: 80px;
+  width: 102px;
   border: 2px groove #E8E8E8;
   border-radius: 5px;
-  margin-top: 10px;
-  margin-left: 63px;
+  margin-top: 24px;
+  margin-left: 33%;
  // width: 200, height: 300, crop: :fill
 }
 

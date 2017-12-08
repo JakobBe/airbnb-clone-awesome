@@ -1,77 +1,87 @@
-
+<div class='banner'>
   <% if @flat.photo? %>
-    <div class="flat-banner" style="background-color:pink;">
-    </div>
+    <%= cl_image_tag current_user.photo.path, class:"flat-image"%>
   <% else %>
-    <div class="flat-banner" style="background-color:pink;">
+    <%= image_tag "flat_placeholder", class:"flat-image"%>
     </div>
   <% end %>
+</div>
 
-  <div class="flat-info-wrapper">
-      <div class="flat-description">
-        <h1><%= @flat.name %></h1>
-        <p>Beautiful flat in <b><%= @flat.location %></b></p>
-        <p>Price per night: <b><%= @flat.price %>€</b></p>
-      </div>
-      <div class="flat-booking-form">
-        <div class="show_booking">
-          <div class="wrap">
-            <h1 class="text-center">
-              Complete your booking
-            </h1>
-            <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
-              <%= simple_form_for [@flat, @booking] do |f| %>
-              <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
-              <%= f.input :nights %>
-              <%= f.hidden_field :flat_id, value: @flat.id %>
-              <%= f.hidden_field :flat_id, value: @flat.id %>
-              <%= f.submit "Book!", class: "btn btn-primary" %>
-              <% end %>
-              <div id="total-price">
-            </div>
+<div class="wrapper-white">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12">
+        <div class="flat-description">
+          <div class="text-center">
+            <h1 class="added-margin-bottom-30px"><%= @flat.name %></h1>
+            <p class="added-margin-bottom-15px">Beautiful flat in <b><%= @flat.location %></b></p>
+            <p class="added-margin-bottom-15px">Price per night: <b><%= @flat.price %>€</b></p>
+            <p class="added-margin-bottom-15px">Description: <b><%= @flat.description %></b></p>
           </div>
         </div>
       </div>
-  </div>
-  </div>
+      <!--  <div class="flat-booking-form"> -->
+        <div class="col-md-6 col-sm-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
+                <div class="flat-booking-form">
+                  <h1 class="text-center"> Booking Information </h1>
+                <%= simple_form_for [@flat, @booking] do |f| %>
 
+                <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
+                <%= f.input :nights %>
 
-<div class="flat-reviews">
-  <% if @reviews.any? %>
-    <% @reviews.each do |review|  %>
-      <div class="message">
-        <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
-        <div class="message-name">
-          <p style="width: 70px; padding-left: 10px;"> <%= review.user.first_name  %></p>
+                <%= f.hidden_field :flat_id, value: @flat.id %>
+                <%= f.hidden_field :flat_id, value: @flat.id %>
+                <%= f.submit "Reserve Now", id: "booking-button" %>
+                <% end %>
+                <div id="total-price"></div>
+              </div>
+            </div>
         </div>
-        <div class="message-body">
-          <h3><%=review.message %> </h3>
-        </div>
-        <div class="message-status">
-          <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>' * review.rating %> </p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="row">
-  <div class="add-review">
-    <div class="wrap">
-      <h1 class="text-center">
-        Review your stay
-      </h1>
-      <div class="form-body col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
-        <%= simple_form_for [@flat, @review] do |f| %>
-        <%= f.input :message %>
-        <%= f.input :rating %>
-        <%= f.submit "Review!", class: "btn btn-primary" %>
-        <% end %>
 
     </div>
   </div>
 </div>
+
+<div class="all-reviews">
+  <div class="flat-reviews">
+    <% if @reviews.any? %>
+      <% @reviews.each do |review|  %>
+        <div class="message">
+          <%= image_tag "flat_placeholder.png", class: "message-avatar" %>
+          <div class="message-name">
+            <p style="width: 70px; padding-left: 10px;"> <%= review.user.first_name  %></p>
+          </div>
+          <div class="message-body">
+            <h3><%=review.message %> </h3>
+          </div>
+          <div class="message-status">
+            <p> <%= raw '<i class="fa fa-star" aria-hidden="true"></i>' * review.rating %> </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+
+<div class="add-review">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-0">
+        <div class="review-form text-center">
+          <h1>Review your stay</h1>
+            <%= simple_form_for [@flat, @review] do |f| %>
+            <%= f.input :message %>
+            <%= f.input :rating %>
+            <%= f.submit "Post your Review", id: "review-button" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
 
