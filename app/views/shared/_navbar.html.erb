@@ -3,9 +3,16 @@
   <a href="/" class="navbar-wagon-brand">
     <%= image_tag "logo.png", {alt: "logo"}  %>
   </a>
-
+  <p>  <div id="search-bar">
+    <%= form_tag(root_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Location" %>
+    <%= submit_tag "Search", :name => nil, class:"search_btn" %>
+    <% end %>
+    </div> </p>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+
     <%  if current_user %>
       <%= link_to "Add a Flat", new_flat_path, class:"navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "My Flats", myflats_path, class:"navbar-wagon-item navbar-wagon-link" if current_user.flats.length > 0 %>
