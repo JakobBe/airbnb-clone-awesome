@@ -64,5 +64,9 @@
 }
 
 .fa-star:hover {
-        transform: scale(0.7); /* Equal to scaleX(0.7) scaleY(0.7) */
-      }
+  transform: scale(0.7); /* Equal to scaleX(0.7) scaleY(0.7) */
+}
+
+input[type="submit"] {
+    margin-bottom: 25px;
+}

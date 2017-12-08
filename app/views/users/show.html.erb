@@ -1,17 +1,15 @@
-<div>
-  <% if @user.photo? %>
-  <%= cl_image_tag @user.photo.path %>
-  <% end %>
+<div class="profile-pic">
+<% if @user.photo? %>
+<%= cl_image_tag @user.photo.path %>
+<% end %>
 </div>
+<div class="profile-box ">
+<div class="show_description text-center">
 
-<div>
-
-  <div class="show_description">
-
-      <h1><%= @user.first_name %></h1>
-      <h1><%= @user.last_name %></h1>
-      <h1><%= link_to 'edit this profile', edit_user_path(current_user) %></h1>
-  </div>
-
+  <h1><%= @user.first_name %></h1>
+  <h1><%= @user.last_name %></h1>
+  <h1><%= link_to 'edit this profile', edit_user_path(current_user) %></h1>
 
 </div>
+</div>
+

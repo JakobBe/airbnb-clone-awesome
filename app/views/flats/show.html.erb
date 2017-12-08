@@ -21,28 +21,24 @@
           </div>
         </div>
       </div>
-      <!--  <div class="flat-booking-form"> -->
-        <div class="col-md-6 col-sm-12">
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
-                <div class="flat-booking-form">
-                  <h1 class="text-center"> Booking Information </h1>
-                <%= simple_form_for [@flat, @booking] do |f| %>
+<!--  <div class="flat-booking-form"> -->
+  <div class="col-md-6 col-sm-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center col-md-offset-0">
+        <div class="flat-booking-form">
+            <h1 class="text-center"> Booking Information </h1>
+              <%= simple_form_for [@flat, @booking] do |f| %>
 
-                <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
-                <%= f.input :nights %>
+              <%= f.input :date, as: :string, input_html: { class: 'datepicker'} %>
+              <%= f.input :nights %>
 
-                <%= f.hidden_field :flat_id, value: @flat.id %>
-                <%= f.hidden_field :flat_id, value: @flat.id %>
-                <%= f.submit "Reserve Now", id: "booking-button" %>
+              <%= f.hidden_field :flat_id, value: @flat.id %>
+              <%= f.hidden_field :flat_id, value: @flat.id %>
+              <%= f.submit "Reserve Now", id: "booking-button" %>
                 <% end %>
-                <div id="total-price"></div>
-              </div>
-            </div>
-        </div>
-
-    </div>
+              <div id="total-price"></div>
+          </div>
+      </div>
   </div>
-</div>
 
 <div class="all-reviews">
   <div class="flat-reviews">
