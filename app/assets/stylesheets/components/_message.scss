@@ -26,6 +26,8 @@
 .message-location h3 {
   font-size: 13px;
   margin-bottom: 0px;
+  margin-top: 0px;
+  width: 100px;
 }
 .message-location p {
   font-size: 13px;
@@ -52,6 +54,10 @@
 .message-status {
   font-size: 14px;
   font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  width: 200px;
 }
 
 .message-delete {
@@ -73,4 +79,16 @@
 }
 .status.pending {
   color: lightgrey;
+}
+
+.status-status {
+  margin-bottom: 4px;
+}
+
+.price {
+  margin-top: 4px;
+}
+
+.status-top {
+  margin-top: 13px;
 }
