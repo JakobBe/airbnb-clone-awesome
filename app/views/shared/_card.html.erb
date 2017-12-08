@@ -1,0 +1,25 @@
+<div class="row flat-cards">
+
+    <ul class="cards">
+  <% @flats.each do |flat|  %>
+      <li class="cards__item">
+        <div class="card">
+          <div class="card__image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path flat.photo.path, height: 300, width: 400, crop: :fill if flat.photo?%>')"></div>
+
+          <div class="card__content">
+          <div class="card__title"> <%= flat.location %> </div>
+          <p class="card__text"> $ <%= flat.price %> </p>
+          <div>
+            <%= link_to "", flat_path(flat), class: "card-link btn btn--block card__btn" %>
+          </div>
+          </div>
+        </div>
+      </li>
+  <% end %>
+    </ul>
+</div>
+
+
+
+
+

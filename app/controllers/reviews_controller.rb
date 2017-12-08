@@ -11,8 +11,9 @@ class ReviewsController < ApplicationController
     @review.user_id = @user.id
     @review.flat_id = @flat.id
     if @review.save
-    redirect_to flat_path(@flat)
-    else render :new
+      redirect_to flat_path(@flat)
+    else
+     render :new
     end
   end
 
